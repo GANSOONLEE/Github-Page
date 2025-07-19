@@ -1,0 +1,32 @@
+@use "sass:color";
+
+/**
+ | Helper Mixins
+ */
+@mixin helper-transition($delay: 0.12s) {
+  cursor: pointer;
+  transition: all $delay ease-in-out;
+}
+
+/**
+ | Client Mixins
+ */
+
+@mixin color-hover($color, $lightness: -20%) {
+  color: $color;
+  @include helper-transition(0.17s);
+
+  &:hover {
+    color: color.adjust($color, $lightness: $lightness);
+  }
+}
+
+@mixin button-hover($color, $lightness: -20%) {
+  background: $color;
+  color: white;
+  @include helper-transition();
+
+  &:hover {
+    background: color.adjust($color, $lightness: $lightness);
+  }
+}

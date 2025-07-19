@@ -1,0 +1,109 @@
+---
+const items = ['🐺 狼狼', '🦊 狐狸', '🐻 熊熊'];
+
+const currentYear = new Date().getFullYear();
+const displayYear = currentYear > 2025 ? `2025 - ${currentYear}` : "2025";
+---
+
+<footer id="footer">
+  <div class="footer__container">
+    <div class="footer__section footer_branding">
+      <h3 class="footer_branding-title">FRANKGAN</h3>
+      <p class="footer_branding-description">Professional portfolio and personal brand</p>
+    </div>
+
+    <div class="footer__section footer__links">
+      <ul class="footer__list">
+        <li class="footer__item"><a href="/" class="footer__link">首頁</a></li>
+        <li class="footer__item"><a href="/" class="footer__link">作品集</a></li>
+        <li class="footer__item"><a href="/about" class="footer__link">關於</a></li>
+        <li class="footer__item"><a href="/contact" class="footer__link">博客</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__section footer__social">
+      <a href="https://github.com/GANSOONLEE" target="_blank" class="fa fa-github"></a>
+      <a href="https://github.com/GANSOONLEE" target="_blank" class="fa fa-linkedin"></a>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <p class="footer__copyright">© { displayYear } 顏循禮 (Frank Gan) 版權所有</p>
+    <p class="footer__slogan">充滿熱情的製作 😀</p>
+  </div>
+</footer>
+
+<style lang="scss">
+@use "sass:color";
+@use "@/styles/mixins" as *;
+@use "@/styles/variables" as *;
+@import url("https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/4.7.0/css/font-awesome.min.css");
+
+footer#footer {
+  background: $primary-dark-color;
+  div.footer__container {
+    padding: 2rem 3rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    div.footer__section {
+
+      @mixin flex-center-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &.footer_branding {
+        h3.footer_branding-title {
+          font-size: 1.4rem;
+          font-weight: 900;
+        }
+        p.footer_branding-description {
+          margin-top: 1rem;
+        }
+      }
+      &.footer__links {
+        @include flex-center-center;
+      }
+      &.footer__social {
+        @include flex-center-center;
+        gap: 1rem;
+        > a {
+          font-size: 1.2rem;
+          padding: .8rem;
+          border-radius: 100%;
+          border: 1px solid #ffffff2e;
+          aspect-ratio: 1/1;
+          &:hover {
+            background: #ffffff17;
+          }
+        }
+      }
+      h3.footer__heading {
+        font-size: 1.6rem;
+        font-weight: bold;
+        border-bottom: 2px solid $primary-white;
+        width: max-content;
+        padding: 0 2rem .4rem 0;
+      }
+      ul.footer__list {
+        @include flex-center-center;
+        gap: 1rem;
+        li {
+          @include color-hover(#939393, 100%);
+        }
+      }
+    }
+  }
+  div.footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+    color: #bebebe;
+    background: color.adjust($primary-dark-color, $lightness: -5%);
+    font-size: .8rem;
+  }
+}
+</style>

@@ -1,0 +1,71 @@
+---
+---
+
+<nav id="navbar">
+  <div class="navbar__logo">
+    FRANKGAN
+  </div>
+  <ul class="navbar__menu">
+    <li class="navbar__item"><a href="/" class="navbar__link">首頁</a></li>
+    <li class="navbar__item"><a href="" class="navbar__link">作品集</a></li>
+    <li class="navbar__item"><a href="/about" class="navbar__link">關於</a></li>
+    <li class="navbar__item"><a href="" class="navbar__link">博客</a></li>
+    <button class="navbar__button_cv">
+      下載 CV
+    </button>
+  </ul>
+</nav>
+
+<style lang="scss">
+@use "@/styles/mixins" as *;
+@use "@/styles/variables" as *;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+}
+
+$navbar-color: $primary-color;
+
+nav#navbar {
+  @include flex-center;
+  justify-content: space-between;
+  color: $navbar-color;
+  background: $primary-dark-color;
+  position: sticky;
+  top: 0;
+  padding: 1.2rem 3rem;
+  div.navbar__logo {
+    font-weight: bold
+  }
+  ul.navbar__menu {
+    @include flex-center;
+    justify-content: center;
+    gap: 2rem;
+    > li {
+      @include color-hover($navbar-color, 15%);
+    }
+    button.navbar__button_cv {
+      padding: .4rem 1rem;
+      border-radius: 4px;
+      @include button-hover($navbar-color, -10%);
+    }
+  }
+}
+
+@media screen and (max-width: 720px) {
+  nav#navbar {
+    div.navbar__logo {
+    }
+    ul.navbar__menu {
+      display: none;
+      > li {
+
+      }
+      button.navbar__button_cv {
+
+      }
+    }
+  }
+}
+</style>
