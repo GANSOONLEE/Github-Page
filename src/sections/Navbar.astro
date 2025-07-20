@@ -5,14 +5,20 @@
   <div class="navbar__logo">
     FRANKGAN
   </div>
+  <label for="menu-button" class="navbar__menu-button fa fa-bars">
+  </label>
+  <input type="checkbox" id="menu-button" name="menu-button">
   <ul class="navbar__menu">
     <li class="navbar__item"><a href="/" class="navbar__link">首頁</a></li>
-    <li class="navbar__item"><a href="" class="navbar__link">作品集</a></li>
+    <li class="navbar__item"><a href="/portfolio" class="navbar__link">作品集</a></li>
     <li class="navbar__item"><a href="/about" class="navbar__link">關於</a></li>
-    <li class="navbar__item"><a href="" class="navbar__link">博客</a></li>
-    <button class="navbar__button_cv">
-      下載 CV
-    </button>
+    <li class="navbar__item"><a href="/blog" class="navbar__link">博客</a></li>
+    <li class="navbar__item cv-download-button"><a href="/download/cv.pdf" class="navbar__link">下載 CV</a></li>
+    <a href="/download/cv.pdf">
+      <button class="navbar__button_cv">
+        下載 CV
+      </button>
+    </a>
   </ul>
 </nav>
 
@@ -38,12 +44,22 @@ nav#navbar {
   div.navbar__logo {
     font-weight: bold
   }
+  button.navbar__menu-button {
+    display: none;
+  }
+  input[type="checkbox"]#menu-button, 
+  label.navbar__menu-button {
+    display: none;
+  }
   ul.navbar__menu {
     @include flex-center;
     justify-content: center;
     gap: 2rem;
     > li {
       @include color-hover($navbar-color, 15%);
+      &.cv-download-button {
+        display: none;
+      }
     }
     button.navbar__button_cv {
       padding: .4rem 1rem;
@@ -53,17 +69,43 @@ nav#navbar {
   }
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 790px) {
   nav#navbar {
     div.navbar__logo {
     }
+    label.navbar__menu-button {
+      display: block;
+    }
+    input[type="checkbox"]#menu-button {
+      &:checked + ul.navbar__menu {
+        left: 0;
+      }
+    }
     ul.navbar__menu {
-      display: none;
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: -100%;
+      background: #171b24cc;
+      backdrop-filter: blur(8px);
+      transition: all .27s ease-in-out;
+      padding: 1rem 0;
+      gap: 0;
+      width: 100%;
       > li {
-
+        width: 100%;
+        &.cv-download-button {
+          display: block;
+        }
+        > a {
+          text-align: center;
+          display: block;
+          padding: 1rem 0;
+        }
       }
       button.navbar__button_cv {
-
+        display: none;
       }
     }
   }

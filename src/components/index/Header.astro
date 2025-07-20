@@ -5,11 +5,21 @@
   <h1 class="header__title">數位化創新專業卓越</h1>
   <h3 class="header__subtitle">致力於打造安全、高效且富有使用者體驗的解決方案。</h3>
   <div class="header__button-group">
-    <button class="header__button-view-portfolio">查看作品集</button>
-    <button class="header__button-get-in-touch">取得聯繫</button>
+    <a href="/portfolio">
+      <button class="header__button-view-portfolio">查看作品集</button>
+    </a>
+    <a href="/contact">
+      <button class="header__button-get-in-touch">取得聯繫</button>
+    </a>
   </div>
-  <div class="header__avatar">
-    <img src="/avatar.jpg" alt="Avatar">
+  <section class="header__intro">
+    <div class="header__avatar">
+      <img src="/avatar.jpg" alt="Avatar">
+    </div>
+    <div class="header__description">
+      <h3 class="title">顏循禮</h3>
+      <p class="description">兼任軟體工程師</p>
+    </div>
   </div>
 </section>
 
@@ -58,18 +68,52 @@ section#header {
       }
     }
   }
-  div.header__avatar {
-    margin-top: 2rem;
-    border-radius: 100%;
-    background: #ffffff4a;
-    aspect-ratio: 1/1;
-    width: 20rem;
-    overflow: hidden;
-    border: 4px solid $primary-color;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+  section.header__intro {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    div.header__avatar {
+      margin-top: 2rem;
+      border-radius: 100%;
+      background: #ffffff4a;
+      aspect-ratio: 1/1;
+      max-width: 20rem;
+      overflow: hidden;
+      border: 4px solid $primary-color;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    div.header__description {
+      h3.title {
+        font-size: 2.4rem;
+      }
+      p.description {
+        margin-top: .4rem;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 790px) {
+  section#header {
+    align-items: center;
+    padding: 4rem;
+    text-align: center;
+    h1.header__title {
+      font-size: 2.8rem;
+    }
+    h3.header__subtitle {
+      font-size: 1rem;
+    }
+    div.header__button-group {
+      flex-direction: column;
+    }
+    section.header__intro {
+      flex-direction: column;
     }
   }
 }

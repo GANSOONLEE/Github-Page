@@ -15,7 +15,7 @@ const displayYear = currentYear > 2025 ? `2025 - ${currentYear}` : "2025";
     <div class="footer__section footer__links">
       <ul class="footer__list">
         <li class="footer__item"><a href="/" class="footer__link">首頁</a></li>
-        <li class="footer__item"><a href="/" class="footer__link">作品集</a></li>
+        <li class="footer__item"><a href="/portfolio" class="footer__link">作品集</a></li>
         <li class="footer__item"><a href="/about" class="footer__link">關於</a></li>
         <li class="footer__item"><a href="/contact" class="footer__link">博客</a></li>
       </ul>
@@ -104,6 +104,29 @@ footer#footer {
     color: #bebebe;
     background: color.adjust($primary-dark-color, $lightness: -5%);
     font-size: .8rem;
+  }
+}
+
+@media screen and (max-width: 790px) {
+  footer#footer {
+    div.footer__container {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      div.footer__section {
+
+        &.footer_branding {
+          text-align: center;
+        }
+        &.footer__links {
+          flex-direction: column;
+        }
+      }
+    }
+  }
+  div.footer__bottom {
+    flex-direction: column;
+    justify-content: center;
+    gap: .6rem;
   }
 }
 </style>
